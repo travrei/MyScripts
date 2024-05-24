@@ -63,7 +63,7 @@ swapon "${NVME}p2"
 
 # Instala a base do Arch Linux
 echo "Instalando o Arch Linux..."
-pacstrap /mnt base linux linux-firmware nano vim networkmanager
+pacstrap /mnt base base-devel linux linux-firmware vim networkmanager
 
 # Gera o fstab
 genfstab -U -p /mnt >> /mnt/etc/fstab
@@ -84,11 +84,11 @@ locale-gen
 echo "archlinux" > /etc/hostname
 
 # Define a senha de root
-echo "drei2110" | passwd
+passwd
 
 # Cria o usuário (ajuste o nome de usuário e a senha)
 useradd -m -g users -G wheel,storage,power -s /bin/bash andreie
-echo "drei2110" | passwd andreie
+passwd andreie
 
 # Instala o GRUB
 echo "Instalando o GRUB..."
